@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="700.0" prefWidth="1100.0">
+         <children>
+            <Pane prefHeight="301.0" prefWidth="155.0" style="-fx-background-color: #e8e8e8;">
+               <children>
+                  <Button fx:id="back" layoutX="18.0" layoutY="23.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="forward" layoutX="79.0" layoutY="23.0" mnemonicParsing="false" onAction="#forward" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/forward.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="highlighting" layoutX="18.0" layoutY="83.0" mnemonicParsing="false" onAction="#highlighting" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/highlighting.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="arrow" layoutX="79.0" layoutY="83.0" mnemonicParsing="false" onAction="#arrow" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/arrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="circle" layoutX="79.0" layoutY="132.0" mnemonicParsing="false" onAction="#circl" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/circl.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logicOr" layoutX="20.0" layoutY="132.0" mnemonicParsing="false" onAction="#logicOr" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/logicOr.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logicAnd" layoutX="18.0" layoutY="181.0" mnemonicParsing="false" onAction="#logicAnd" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/logicAnd.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="fictitiousCircle" layoutX="79.0" layoutY="181.0" mnemonicParsing="false" onAction="#fictitiousCircle" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/fictitiousCircl.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="logicNot" layoutX="18.0" layoutY="228.0" mnemonicParsing="false" onAction="#logicNot" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/logicNot.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="propagatedCircle" layoutX="79.0" layoutY="228.0" mnemonicParsing="false" onAction="#propagatedCircle" prefHeight="33.0" prefWidth="45.0">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/icon/propagatedCircl.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <ScrollPane layoutX="154.0" layoutY="-2.0" prefHeight="702.0" prefWidth="947.0">
+              <content>
+                <AnchorPane fx:id="scrollPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#mouseClick" onMouseMoved="#mouseMoved" prefHeight="701.0" prefWidth="948.0" />
+              </content>
+            </ScrollPane>
+            <Label layoutX="11.0" layoutY="334.0" text="Yс = ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="condition" layoutX="42.0" layoutY="332.0" prefHeight="25.0" prefWidth="102.0" promptText="Условие фун-ия" />
+            <Button layoutX="11.0" layoutY="408.0" mnemonicParsing="false" onAction="#logicFunction" text="Логическая функция" />
+            <Button layoutX="12.0" layoutY="439.0" mnemonicParsing="false" onAction="#probabilityFunction" text="Вероятн-ая функция" />
+            <Label layoutX="32.0" layoutY="383.0" text="Вывод функции:" />
+            <Button layoutX="6.0" layoutY="528.0" mnemonicParsing="false" onAction="#relevanceFunction" text="Значимость элементов" />
+            <Button layoutX="21.0" layoutY="494.0" mnemonicParsing="false" onAction="#contributionFunction" text="Вклад элементов" />
+            <Pane layoutX="-1.0" layoutY="580.0" prefHeight="120.0" prefWidth="155.0" style="-fx-background-color: #e8e8e8;">
+               <children>
+                  <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#calculateProbability" style="-fx-border-color: black;" text="Расчёт вероятности" />
+                  <Button layoutX="26.0" layoutY="69.0" mnemonicParsing="false" onAction="#getReport" text="Получить отчёт" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</GridPane>
