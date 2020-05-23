@@ -17,6 +17,7 @@ public class LogicFunctionController {
 
     private TempCircle[] circlesArray;
     private String[] conditionsArray;
+    private String[] conditionsNotArray;
 
     @FXML
     private ResourceBundle resources;
@@ -28,15 +29,19 @@ public class LogicFunctionController {
     ScrollPane scrollPane;
 
     @FXML
-    Text text;
+    Text conditionsText;
+
+    @FXML
+    Text conditionsNotText;
 
 
     @FXML
     void initialize() {
         fillCirclesArray();
         fillConditionsArray();
-        text.setText(getConditions());
-
+        fillConditionsNotArray();
+        conditionsText.setText(getConditions());
+        conditionsNotText.setText(getConditionsNot());
     }
 
     private String getConditions() {
@@ -47,6 +52,61 @@ public class LogicFunctionController {
 
         return str.toString();
     }
+
+    private String getConditionsNot() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 1; i < conditionsNotArray.length; i++) {
+            str.append("!y").append(i).append(" = ").append(conditionsNotArray[i]).append("\n");
+        }
+
+        return str.toString();
+    }
+
+    private void fillConditionsNotArray() {
+        conditionsNotArray = new String[conditionsArray.length];
+
+        StringBuffer element;
+        char symbol;
+        for (int i = 1; i < conditionsArray.length; i++) {
+            element = new StringBuffer(conditionsArray[i]);
+
+            for (int j = 0; j < element.length(); j++) {
+                symbol = element.charAt(j);
+                switch (symbol) {
+                    case '!':
+                        element.delete(j, j+1);
+                        j = searchingLoop(element, j);
+                        break;
+                    case '*':
+                        element.replace(j, j+1, "+");
+                        j++;
+                        break;
+                    case '+':
+                        element.replace(j, j+1, "*");
+                        j++;
+                        break;
+                    case ' ':
+                        break;
+                    default:
+                        element.insert(j, '!');
+                        j = searchingLoop(element, j);
+                }
+            }
+            conditionsNotArray[i] = element.toString();
+        }
+    }
+
+    private int searchingLoop(StringBuffer element, int j) {
+        char symbol;
+        do {
+            j++;
+            if (j == element.length() - 1) return j;
+            symbol = element.charAt(j);
+        } while (symbol != '+' && symbol != '*');
+
+        return j-1;
+    }
+
 
     private void fillCirclesArray() {
         int size = Controller.tempCircleArray.size();

@@ -8,7 +8,8 @@
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <Text fx:id="text" layoutX="36.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="927.13671875" />
+            <Text fx:id="conditionsText" layoutX="36.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="441.13671875" />
+            <Text fx:id="conditionsNotText" layoutX="509.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="442.13671875" />
          </children></AnchorPane>
   </content>
 </ScrollPane>
