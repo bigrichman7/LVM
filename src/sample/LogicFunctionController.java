@@ -19,6 +19,8 @@ public class LogicFunctionController {
     private String[] conditionsArray;
     private String[] conditionsNotArray;
 
+    private StringBuffer mainCondition;
+
     @FXML
     private ResourceBundle resources;
 
@@ -34,6 +36,9 @@ public class LogicFunctionController {
     @FXML
     Text conditionsNotText;
 
+    @FXML
+    Text logicFormula;
+
 
     @FXML
     void initialize() {
@@ -42,6 +47,86 @@ public class LogicFunctionController {
         fillConditionsNotArray();
         conditionsText.setText(getConditions());
         conditionsNotText.setText(getConditionsNot());
+
+        deriveFormula();
+
+    }
+
+    private void deriveFormula() {
+        mainCondition = new StringBuffer(Controller.mainCondition);
+        substituteValues();
+        logicFormula.setText("Yc = " + Controller.mainCondition + " = " + mainCondition.toString());
+
+        while (mainCondition.toString().contains("y")) {
+            substituteValues();
+            logicFormula.setText(logicFormula.getText() + " = " + mainCondition.toString());
+        }
+
+        logicFormula.setText(logicFormula.getText() + ";");
+    }
+
+    private void substituteValues() {
+        char symbol;
+        char not;
+        boolean sign;
+        StringBuilder stringNumber;
+        int number;
+        boolean beforeMultiply;
+        boolean afterMultiply;
+        boolean containsMultiplication;
+        String replace;
+        StringBuffer tempMainCondition = new StringBuffer();
+        for (int i = 0; i < mainCondition.length(); i++) {
+            symbol = mainCondition.charAt(i);
+            sign = false;
+            stringNumber = new StringBuilder();
+            beforeMultiply = false;
+            afterMultiply = false;
+            if (symbol == 'y') {
+
+                //Определяем, является ли y отрицательным
+                //И имеется ли знак умножения до y
+                if (i != 0) {
+                    not = mainCondition.charAt(i - 1);
+                    if (not == '!') {
+                        sign = true;
+                        if (mainCondition.charAt(i - 3) == '*') beforeMultiply = true;
+                    } else {
+                        if (mainCondition.charAt(i - 2) == '*') beforeMultiply = true;
+                    }
+                }
+
+
+                //Определяем номер y
+                //И имеется ли знак умножения после y
+                do {
+                    i++;
+                    if (i == mainCondition.length()) break;
+                    symbol = mainCondition.charAt(i);
+                    if (symbol != ' ') stringNumber.append(symbol);
+                } while (symbol != ' ');
+                number = Integer.parseInt(stringNumber.toString());
+                if (i != mainCondition.length()) {
+                    if (mainCondition.charAt(i + 1) == '*') afterMultiply = true;
+                }
+
+                //Определяем имеется ли '+' в подставляемом выражении
+                //И подставляем
+                if (sign) replace = conditionsNotArray[number];
+                else replace = conditionsArray[number];
+
+                if ((beforeMultiply || afterMultiply) && replace.contains("+")) tempMainCondition.append("( ").append(replace).append(" )");
+                else tempMainCondition.append(replace);
+
+                if (i != mainCondition.length()) {
+                    tempMainCondition.append(" ");
+                }
+
+            } else if (symbol == '!' && mainCondition.charAt(i + 1) == 'y'){
+
+            } else tempMainCondition.append(symbol);
+        } //end for
+        mainCondition = tempMainCondition;
     }
 
     private String getConditions() {
@@ -74,15 +159,15 @@ public class LogicFunctionController {
                 symbol = element.charAt(j);
                 switch (symbol) {
                     case '!':
-                        element.delete(j, j+1);
+                        element.delete(j, j + 1);
                         j = searchingLoop(element, j);
                         break;
                     case '*':
-                        element.replace(j, j+1, "+");
+                        element.replace(j, j + 1, "+");
                         j++;
                         break;
                     case '+':
-                        element.replace(j, j+1, "*");
+                        element.replace(j, j + 1, "*");
                         j++;
                         break;
                     case ' ':
@@ -104,7 +189,7 @@ public class LogicFunctionController {
             symbol = element.charAt(j);
         } while (symbol != '+' && symbol != '*');
 
-        return j-1;
+        return j - 1;
     }
 
 

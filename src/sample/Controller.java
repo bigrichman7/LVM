@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sample.animations.Shake;
 
 
 public class Controller {
@@ -62,6 +63,8 @@ public class Controller {
     TempArrow tempArrow;
     static List<TempCircle> tempCircleArray = new ArrayList<>();
 
+    static String mainCondition;
+
     int interNumber;
 
     ContextMenu contextMenu;
@@ -80,11 +83,18 @@ public class Controller {
 
     @FXML
     void logicFunction(ActionEvent event) throws IOException {
-        Stage logicFunctionStage = new Stage();
-        ScrollPane root = FXMLLoader.load(getClass().getResource("logicFunction.fxml"));
-        logicFunctionStage.setTitle("Вывод логической функции");
-        logicFunctionStage.setScene(new Scene(root, 1000, 600));
-        logicFunctionStage.show();
+        if (!condition.getText().isEmpty()) {
+            mainCondition = condition.getText();
+            Stage logicFunctionStage = new Stage();
+            ScrollPane root = FXMLLoader.load(getClass().getResource("logicFunction.fxml"));
+            logicFunctionStage.setTitle("Вывод логической функции");
+            logicFunctionStage.setScene(new Scene(root, 1000, 600));
+            logicFunctionStage.setResizable(false);
+            logicFunctionStage.show();
+        } else {
+            Shake emptyCondition = new Shake(condition);
+            emptyCondition.playAnim();
+        }
     }
 
     @FXML
