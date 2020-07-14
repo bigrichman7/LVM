@@ -43,24 +43,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="highlighting" layoutX="18.0" layoutY="83.0" mnemonicParsing="false" onAction="#highlighting" prefHeight="33.0" prefWidth="45.0">
+                  <Button fx:id="openSFC" layoutX="18.0" layoutY="83.0" mnemonicParsing="false" onAction="#openSFC" prefHeight="33.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/icon/highlighting.png" />
+                              <Image url="@img/icon/open.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="arrow" layoutX="79.0" layoutY="83.0" mnemonicParsing="false" onAction="#arrow" prefHeight="33.0" prefWidth="45.0">
+                     </graphic></Button>
+                  <Button fx:id="saveSFC" layoutX="79.0" layoutY="83.0" mnemonicParsing="false" onAction="#saveSFC" prefHeight="33.0" prefWidth="45.0">
                      <graphic>
-                        <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/icon/arrow.png" />
+                              <Image url="@img/icon/disk.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                     </graphic></Button>
                   <Button fx:id="circle" layoutX="79.0" layoutY="132.0" mnemonicParsing="false" onAction="#circl" prefHeight="33.0" prefWidth="45.0">
                      <graphic>
                         <ImageView fitHeight="18.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
@@ -119,7 +117,7 @@
             </Pane>
             <ScrollPane layoutX="154.0" layoutY="-2.0" prefHeight="702.0" prefWidth="947.0">
               <content>
-                <AnchorPane fx:id="scrollPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#mouseClick" onMouseMoved="#mouseMoved" prefHeight="701.0" prefWidth="948.0" />
+                <AnchorPane fx:id="scrollPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#mouseClick" onMouseMoved="#mouseMoved" prefHeight="800.0" prefWidth="1150.0" />
               </content>
             </ScrollPane>
             <Label layoutX="11.0" layoutY="334.0" text="Yс = ">

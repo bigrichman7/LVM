@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Pane root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("LVM");
+        primaryStage.setTitle("LVM v0.1");
         primaryStage.setScene(new Scene(root, 1100, 700));
         primaryStage.show();
     }

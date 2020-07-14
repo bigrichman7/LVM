@@ -69,6 +69,10 @@ public class TempCircle {
         return Integer.parseInt(index.getCharacters().toString());
     }
 
+    public TextField getIndexTextField() {
+        return index;
+    }
+
     public String getTypeCircle() {
         return typeCircle;
     }
